@@ -11,7 +11,7 @@ class LoadMore extends React.Component {
 
     render() {
         return (
-            <div className="load-more">
+            <div className="load-more" ref="wrapper">
                 {
                     this.props.isLoadingMore ?
                     <span>loading .....</span>
@@ -23,6 +23,30 @@ class LoadMore extends React.Component {
 
     loadMoreHandler() {
         this.props.loadMoreFn();
+    }
+
+    componentDidMount() {
+        const loadMoreFn = this.props.loadMoreFn
+        const wrapper = this.refs.wrapper;
+        let timeoutId
+        function callback() {
+            // console.log(456)
+            const top = wrapper.getBoundingClientRect().top
+            console.log(wrapper.getBoundingClientRect())
+            const windowHeight = window.screen.height
+            if(top && top <= windowHeight ) {
+                loadMoreFn()
+            }
+        }
+        window.addEventListener('scroll', function() {
+            if(this.props.isLoadingMore) {
+                return;
+            }
+            if(timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout(callback, 50);
+        }.bind(this), false)
     }
 }
 

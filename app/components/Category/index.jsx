@@ -26,16 +26,16 @@ class Category extends React.Component {
             <ReactSwipe swipeOptions={opt}>
                 <div className="carousel-item">
                     <ul className="clear-fix">
-                        <li className="float-left jingdian">景点</li>
-                        <li className="float-left ktv">KTV</li>
-                        <li className="float-left gouwu">购物</li>
-                        <li className="float-left shenghuofuwu">生活服务</li>
-                        <li className="float-left jianshenyundong">健身运动</li>
-                        <li className="float-left meifa">美发</li>
-                        <li className="float-left qinzi">亲子</li>
-                        <li className="float-left xiaochikuaican">小吃快餐</li>
-                        <li className="float-left zizhucan">自助餐</li>
-                        <li className="float-left jiuba">酒吧</li>
+                        <li className="float-left jingdian" onClick={this.clickHandler.bind(this, "jingdian")}>景点</li>
+                        <li className="float-left ktv" onClick={this.clickHandler.bind(this, "ktv")}>KTV</li>
+                        <li className="float-left gouwu" onClick={this.clickHandler.bind(this, "shop")} >购物</li>
+                        <li className="float-left shenghuofuwu" onClick={this.clickHandler.bind(this, "jingdian")}>生活服务</li>
+                        <li className="float-left jianshenyundong" onClick={this.clickHandler.bind(this, "jingdian")}>健身运动</li>
+                        <li className="float-left meifa" onClick={this.clickHandler.bind(this, "jingdian")}>美发</li>
+                        <li className="float-left qinzi" onClick={this.clickHandler.bind(this, "jingdian")}>亲子</li>
+                        <li className="float-left xiaochikuaican" onClick={this.clickHandler.bind(this, "jingdian")}>小吃快餐</li>
+                        <li className="float-left zizhucan" onClick={this.clickHandler.bind(this, "jingdian")}>自助餐</li>
+                        <li className="float-left jiuba" >酒吧</li>
                     </ul>
                 </div>
                 <div className="carousel-item">
@@ -76,6 +76,10 @@ class Category extends React.Component {
             </div>
             </div>
         )
+    }
+
+    clickHandler(value) {
+        this.props.history.push('/search/' + value);
     }
 
 }

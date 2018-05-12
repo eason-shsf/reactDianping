@@ -4,7 +4,7 @@ import {Link} from 'react-router'
 import './style.less'
 import SearchInput from '../SearchInput'
 
-class HomeHeader extends React.Component  {
+class SearchHeader extends React.Component  {
     constructor(props, context) {
         super(props, context)
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
@@ -13,14 +13,10 @@ class HomeHeader extends React.Component  {
     render() {
         return (
             <div id="home-header" className="clear-fix">
-                <Link to="/city">
-                    <div className="home-header-left float-left">
-                        <span>{this.props.cityName}</span>
-                        &nbsp;
-                        <i className="icon-angle-down"></i>
+
+                    <div className="home-header-left float-left" onClick={this.onBackButtonHandler.bind(this)}>
+                        <i className="icon-chevron-left"></i>
                     </div>
-                </Link>
-                <div className="home-header-right float-right"><i className="icon-user"></i></div>
                 <div className="home-header-middle">
                 <div className="search-container">
                     <i className="icon-search"></i>
@@ -31,9 +27,13 @@ class HomeHeader extends React.Component  {
         )
     }
 
+    onBackButtonHandler() {
+        this.props.history.goBack();
+    }
+
     confirmInputHandler(value) {
-        this.props.history.push('/search/all/' + value);
+        this.props.history.push('/search/all/' + encodeURIComponent(value));
     }
 }
 
-export default HomeHeader
+export default SearchHeader

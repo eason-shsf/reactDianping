@@ -5,6 +5,7 @@ export function getAdData() {
     return result
 }
 
-export function getListData(city, page) {
-    return get('/api/homelist/' + encodeURIComponent(city) + '/' + page)
+export function getListData(city, page, searchPath) {
+    searchPath = searchPath ? searchPath : ""
+    return get('/api/homelist/' + encodeURIComponent(city) + '/' + page + searchPath)
 }

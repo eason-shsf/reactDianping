@@ -17,8 +17,8 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <HomeHeader cityName={this.props.userinfo.cityName}/>
-                <Category/>
+                <HomeHeader cityName={this.props.userinfo.cityName} history={this.props.history}/>
+                <Category history={this.props.history}/>
                 <div style={{height: 10}}></div>
                 <Ad/>
                 <List cityName={this.props.userinfo.cityName}/>
