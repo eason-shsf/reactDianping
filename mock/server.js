@@ -72,6 +72,12 @@ router.get('/api/detail/comment/:page/:id', function *(next) {
     this.body = detailComment
 })
 
+const orderList = require('./OrderList/orderlist');
+router.get('/api/orderlist', function *(next) {
+    console.log('order list');
+    this.body = orderList
+})
+
 // 开始服务并生成路由
 app.use(router.routes())
    .use(router.allowedMethods());
