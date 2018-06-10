@@ -42,7 +42,6 @@ class Login extends React.Component {
     }
 
     loginHandle(username) {
-        // debugger;
         const actions = this.props.userInfoActions
         let userinfo = this.props.userinfo
         userinfo.username = username

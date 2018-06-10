@@ -30,10 +30,9 @@ class LoadMore extends React.Component {
         const wrapper = this.refs.wrapper;
         let timeoutId
         function callback() {
-            // console.log(456)
             const top = wrapper.getBoundingClientRect().top
-            console.log(wrapper.getBoundingClientRect())
             const windowHeight = window.screen.height
+            console.log(top + " " + windowHeight);
             if(top && top <= windowHeight ) {
                 loadMoreFn()
             }
